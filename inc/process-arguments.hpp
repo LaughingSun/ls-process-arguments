@@ -62,6 +62,18 @@ namespace ls {
     
   };
 
+  enum argument_flags_e {
+    ARGFLAGS_DEFAULT      = 0x00000 // use defaults
+    
+    , ARGFLAGS_IMMED      = 0x00001 // process immediately
+    , ARGFLAGS_EVERY      = 0x00002 // process on every pass
+    , ARGFLAGS_REQUIRE    = 0x00004 // is a required switch
+    , ARGFLAGS_REQEXIT    = 0x00008 // request exit after switch is processed
+    
+    , ARGFLAGS_USER       = 0x10000 // user defined flags
+    
+  };
+
   struct argdef_s;
   typedef int (*argument_callback_t)( int key, char* arg
       , int& argi, int& argc
@@ -74,6 +86,23 @@ namespace ls {
     const char* args;
     const char* desc;
     argument_callback_t callback;
+    unsigned int flags;
+    
+    argdef_s (
+        int key_ = ARGDEFS_END
+        , const char* name_ = 0
+        , const char* args_ = 0
+        , const char* desc_ = 0
+        , argument_callback_t callback_ = 0
+        , int flags_ = ARGFLAGS_DEFAULT )
+    : key( key_ )
+    , name( name_ )
+    , args( args_ )
+    , desc( desc_ )
+    , callback( callback_ )
+    , flags( flags_ ) {
+    }
+    
   };
 
   typedef enum verbosity {
@@ -116,11 +145,11 @@ namespace ls {
         , err( &std::cerr )
         , nil( new std::ostream( 0 ) )
         , verbosity( v_failure ) {
-      std::cerr << "process_arguments_state_s constructed" << std::endl;
+//      std::cerr << "process_arguments_state_s constructed" << std::endl;
     }
     
     ~process_arguments_state_s ( ) {
-      std::cerr << "process_arguments_state_s destructed" << std::endl;
+//      std::cerr << "process_arguments_state_s destructed" << std::endl;
       if ( in_file ) in_file->close( );
       if ( out_file ) in_file->close( );
       if ( err_file ) err_file->close( );

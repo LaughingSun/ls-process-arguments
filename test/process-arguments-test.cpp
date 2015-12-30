@@ -26,11 +26,11 @@ struct userdata_s : process_arguments_state_s {
       , fail_count( 0 )
       , error_count( 0 )
       , all_count( 0 ) {
-    std::cerr << "userdata_s constructed" << std::endl;
+//    std::cerr << "userdata_s constructed" << std::endl;
   }
   
   ~userdata_s ( ) {
-    std::cerr << "userdata_s destructed" << std::endl;
+//    std::cerr << "userdata_s destructed" << std::endl;
   }
   
 };

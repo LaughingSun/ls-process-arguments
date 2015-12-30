@@ -1,7 +1,7 @@
 # ls-process-arguments
 command line arguments processor, similar to argp but with callbacks and easier to quickly implement.
 
-1. #include "ls-process-arguments.hpp" im your main program file.
+1. #include "ls-process-arguments.hpp" in your main program file.
 2. define a userdata type [optional]
 3. define switch (and argument) callbacks [optional]
 4. define switch (and argument) definitions
@@ -9,6 +9,8 @@ command line arguments processor, similar to argp but with callbacks and easier 
 
 simple static example:
 ```c++
+#include "ls-process-arguments.hpp"
+
 using namespace ls;
 
 /* global of argv[0] and argv */
